@@ -85,6 +85,11 @@ export const cms = (function cmsAutoInit() {
         getRouteByPath(path: string) {
             return routeCatalog[_currentLocale]!.find((r) => r.path === path);
         },
+        getRouteByIdentifer(id: string, locale?: string) {
+            return routeCatalog[locale || _currentLocale]!.find((r) =>
+                r.routingIdentifiers.includes(id),
+            );
+        },
         getBreadcrumb(path: string) {
             const currentRoute = routeCatalog[_currentLocale]!.find(
                 (r) => r.path === path,
@@ -164,6 +169,7 @@ export interface DirectusCmsRoute {
     cover: DirectusFieldImage;
     components: DirectusCmsComponent[];
     localVersions: { locale: string; url: string }[];
+    routingIdentifiers: string[];
 }
 
 export type DirectusCmsComponent =
