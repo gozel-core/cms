@@ -126,7 +126,6 @@ export const cms = (function cmsAutoInit() {
             return this;
         },
         getCorrespondingRoute(path: string, locale: string) {
-            console.log("corrspondng route: ", path, locale, _currentLocale);
             const _route = routeCatalog[_currentLocale]!.find(
                 (r) => r.path === path,
             );
