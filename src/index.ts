@@ -174,7 +174,8 @@ export interface DirectusCmsRoute {
 
 export type DirectusCmsComponent =
     | DirectusCmsComponentLink
-    | DirectusCmsComponentSingleText;
+    | DirectusCmsComponentSingleText
+    | DirectusCmsPhotoGallery;
 
 export interface DirectusCmsComponentSingleText {
     _component: "SingleText";
@@ -189,6 +190,11 @@ export interface DirectusCmsComponentLink {
     description: string;
     image: DirectusFieldImage;
     [index: string]: unknown;
+}
+
+export interface DirectusCmsPhotoGallery {
+    status: string;
+    photos: DirectusFieldImage[];
 }
 
 export interface DirectusFieldImage {
