@@ -193,6 +193,7 @@ export interface DirectusCmsComponentLink {
 }
 
 export interface DirectusCmsPhotoGallery {
+    _component: "PhotoGallery";
     status: string;
     photos: DirectusFieldImage[];
 }
