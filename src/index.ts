@@ -102,6 +102,14 @@ export const cms = (function cmsAutoInit() {
                 return { title: _route?.title, url: _route?.path };
             });
         },
+        getChildren(path: string) {
+            const parent = this.getRouteByPath(path);
+            if (!parent)
+                throw new Error(
+                    `Couldn't find parent route for the path ${path}`,
+                );
+            return this.getRoutes().filter((r) => r.parent === parent.id);
+        },
         async loadRoutes(locale: string) {
             if (!Object.hasOwn(routeLoaders, locale)) {
                 throw new Error(
