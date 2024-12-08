@@ -37,6 +37,9 @@ export const cms = (function cmsAutoInit() {
         setSettings(settings: DirectusCmsSettings) {
             _settings = settings;
         },
+        getSettings() {
+            return _settings;
+        },
         isUnderMaintenance() {
             return _settings.maintenance_mode;
         },
