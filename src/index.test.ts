@@ -1,5 +1,6 @@
 import { test, expect } from "vitest";
+import { extractLocaleFromFilePath } from "./util";
 
 test("empty", () => {
-    expect(true).toBe(true);
+    expect(extractLocaleFromFilePath("tr-TR.json")).toBe("tr-TR");
 });

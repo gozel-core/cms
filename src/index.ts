@@ -1,3 +1,5 @@
+import { extractLocaleFromFilePath } from "./util";
+
 export const cms = (function cmsAutoInit() {
     let _businesses: DirectusBusiness[] = [];
     let _languages: DirectusLanguage[] = [];
@@ -89,8 +91,9 @@ export const cms = (function cmsAutoInit() {
             return routeCatalog[_currentLocale]!.find((r) => r.path === path);
         },
         getRouteByIdentifer(id: string, locale?: string) {
-            return routeCatalog[locale || _currentLocale]!.find((r) =>
-                r.routingIdentifiers.includes(id),
+            return routeCatalog[locale || _currentLocale]!.find(
+                (r) =>
+                    r.routingIdentifiers && r.routingIdentifiers.includes(id),
             );
         },
         getBreadcrumb(path: string) {
@@ -149,12 +152,6 @@ export const cms = (function cmsAutoInit() {
             return routeCatalog[locale]!.find((r) => r.id === _route.id)?.path;
         },
     };
-
-    function extractLocaleFromFilePath(filepath: string) {
-        const pattern = /(?=(\/|.|-|_))[a-z]{2}(-|_)[A-Z]{2}(?=(\/|.|-|_))/;
-        const match = filepath.match(pattern);
-        return match ? match[0] : null;
-    }
 
     return api;
 })();
