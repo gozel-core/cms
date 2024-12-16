@@ -188,6 +188,9 @@ export type DirectusCmsComponent =
 export interface DirectusCmsComponentSingleText {
     _component: "SingleText";
     status: string;
+    has_title: boolean;
+    title: string;
+    html_text: string;
 }
 
 export interface DirectusCmsComponentLink {
